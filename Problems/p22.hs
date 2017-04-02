@@ -14,8 +14,7 @@ nameScore name = sum $ map (\chr -> (ord chr)-64) name
 calc :: [String] -> Int 
 calc input = do 
     let nameScores = map (\x -> nameScore x) $ sort input
-        multipliedNameScores = [x*(nameScores !! (x-1)) | x <- [1..(length nameScores)]] -- element * index
-    sum multipliedNameScores
+    sum $ zipWith (*) [1..] nameScores
 
 main :: IO ()
 main = do
