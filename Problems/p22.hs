@@ -20,4 +20,4 @@ main :: IO ()
 main = do
     withFile "Resources/p22.txt" ReadMode (\handle -> do
         contents <- hGetContents handle 
-        putStr $ show $ calc $ lines contents)
+        print $ calc $ lines contents)
