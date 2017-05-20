@@ -21,10 +21,11 @@ import Data.Maybe
 -- First param is the current elem, second param is the collatz length
 collatzSeq :: Int -> Int -> Int
 collatzSeq 1 n = n -- terminating state
-collatzSeq elem n = do
-    if odd elem then collatzSeq (3*elem+1) (n+1)
-    else collatzSeq (elem `div` 2) (n+1)
+collatzSeq e n = do
+    if odd e then collatzSeq (3*e+1) (n+1)
+    else collatzSeq (e `div` 2) (n+1)
 
+calc :: Int 
 calc = do
     let collatzNumbers = map applyCollatz [1..999999] where
         applyCollatz n = collatzSeq n 1
@@ -32,5 +33,5 @@ calc = do
     let maxCollatzElem = fromJust (elemIndex maxSequence collatzNumbers) + 1
     maxCollatzElem
 
-main = do
-    putStrLn $ show calc
+main :: IO ()
+main = print calc

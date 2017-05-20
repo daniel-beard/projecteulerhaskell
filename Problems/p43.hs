@@ -12,9 +12,7 @@
 -- Find the sum of all 0 to 9 pandigital numbers with this property.
 
 import Data.List
-
-listToInt :: [Int] -> Int
-listToInt i = foldl ((+).(*10)) 0 i
+import Utils.List
 
 isDivisible :: [Int] -> Bool
 isDivisible i = all (==0) $ zipWith (\x y -> y `mod` x) [2,3,5,7,11,13,17] $ map (listToInt) $ [take 3 $ drop (x-1) i  | x <- [2..8]]

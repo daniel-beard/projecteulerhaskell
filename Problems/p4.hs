@@ -8,4 +8,8 @@ palindrome n = n == (reverse n)
 products :: [Integer]
 products = [x * y | x <- [100..999], y <- [100..999]]
 
+calc :: Integer
 calc = maximum $ filter (\x -> palindrome $ show x) products
+
+main :: IO ()
+main = print calc

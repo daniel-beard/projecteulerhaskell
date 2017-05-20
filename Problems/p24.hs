@@ -7,4 +7,8 @@
 import Data.Char
 import Data.List
 
-calc = map intToDigit ((sort $ permutations [0..9]) !! (1000000-1))
+calc :: Int  
+calc = read $ map intToDigit ((sort $ permutations [0..9]) !! (1000000-1))
+
+main :: IO ()
+main = print calc

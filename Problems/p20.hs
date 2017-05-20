@@ -10,7 +10,8 @@ import Data.Char
 sumOfFactorialDigits :: Integer -> Int
 sumOfFactorialDigits n = sum . map (\c -> digitToInt c) $ show $ foldl (*) 1 [1..n] 
 
+calc :: Int
 calc = sumOfFactorialDigits 100
 
-main = do 
-    putStrLn $ show calc
+main :: IO ()
+main = print calc

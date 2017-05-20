@@ -10,5 +10,4 @@ calc :: Integer
 calc = sumOfDigits (2^1000)
 
 main :: IO ()
-main = do 
-    putStrLn $ show calc
+main = print calc

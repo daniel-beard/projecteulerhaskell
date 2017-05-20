@@ -6,10 +6,10 @@ import System.IO
 import Data.Char
 
 calc :: String -> String
-calc input = take 10 $ show $ sum . map (\elem -> (read elem :: Integer)) $ lines input
+calc input = take 10 $ show $ sum . map (\e -> (read e :: Integer)) $ lines input
 
 main :: IO ()
 main = do
     withFile "Resources/p13.txt" ReadMode (\handle -> do
         contents <- hGetContents handle 
-        putStr $ show $ calc contents)
+        print $ calc contents)

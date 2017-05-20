@@ -11,17 +11,7 @@
 -- What is the smallest odd composite that cannot be written as the sum of a prime and twice a square?
 
 import Utils.Primes
-
-isPrime :: Int -> Bool
-isPrime i = if i == 1 then True else last (takeWhile (<=i) primes) == i
-  
-primesLessThan :: Int -> [Int]  
-primesLessThan x = reverse $ takeWhile (<x) (1:primes)
-
-takeWhileInclusive :: (a -> Bool) -> [a] -> [a]
-takeWhileInclusive _ [] = []
-takeWhileInclusive p (x:xs) = x : if p x then takeWhileInclusive p xs
-                                         else []
+import Utils.List
 
 isGoldbachNumber :: Int -> Bool
 isGoldbachNumber x = do 

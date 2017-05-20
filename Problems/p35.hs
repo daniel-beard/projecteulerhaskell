@@ -7,6 +7,7 @@
 import Data.List
 import Data.Char
 import Utils.Primes
+import Utils.List
 
 -- The approach I take here, is to generate all the combinations of [1,3,7,9] for lengths 2..6 (then include the single digit primes 2,3,7,9
 -- Then check if every rotation of the combinations is prime.
@@ -19,14 +20,11 @@ slice start stop xs = fst $ splitAt (stop - start) (snd $ splitAt start xs)
 flatten :: [[a]] -> [a]         
 flatten xs = (\z n -> foldr (\x y -> foldr z y x) n xs) (:) []
 
-intListToInt :: [Int] -> Int
-intListToInt l = read (map (intToDigit) l) :: Int
-
 allPrimes :: [Int] -- All primes under a million
 allPrimes = takeWhile (<10^6) primes
 
-isPrime :: Int -> Bool
-isPrime n = elem n allPrimes
+isPrime'' :: Int -> Bool
+isPrime'' n = elem n allPrimes
 
 -- Generates all digit rotations for a given input, e.g.
 -- digitRotations 123 -> [123,231,312]
@@ -38,7 +36,7 @@ digitRotations n = do
 
 -- Checks if all digit rotations are prime
 allRotationsPrime :: Int -> Bool
-allRotationsPrime n = all (isPrime) $ digitRotations n 
+allRotationsPrime n = all (isPrime'') $ digitRotations n 
 -----------------------------------------------------
 
 -- Instead of checking all the primes, we can generate all combinations of [1,3,9,7] of length 2 to 6
@@ -47,12 +45,11 @@ allCombinations size = do
     let wheel = take (size*4) $ cycle [1,3,7,9]
     filter (\x -> length x == size) $ subsequences wheel 
 
-uniquePrimeCombinations = do 
-    [2,3,5,7] ++ (filter (isPrime) $ nub $ map (intListToInt) $ flatten [allCombinations x | x <- [2..6]])
+uniquePrimeCombinations :: [Int]
+uniquePrimeCombinations = [2,3,5,7] ++ (filter (isPrime) $ nub $ map (listToInt) $ flatten [allCombinations x | x <- [2..6]])
 
-calc = do
-    (length $ [x | x <- uniquePrimeCombinations, allRotationsPrime x == True]) 
+calc :: Int 
+calc = (length $ [x | x <- uniquePrimeCombinations, allRotationsPrime x == True]) 
 
 main :: IO ()
-main = do 
-    print calc
+main = print calc

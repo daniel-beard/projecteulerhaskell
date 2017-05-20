@@ -8,4 +8,9 @@ naive_fib :: Integer -> Integer
 naive_fib 1 = 1
 naive_fib 2 = 2
 naive_fib n = naive_fib(n-1) + naive_fib(n-2)
+
+calc :: Integer
 calc = sum $ takeWhile (<4000000) $ filter even $ map naive_fib [1..]
+
+main :: IO ()
+main = print calc

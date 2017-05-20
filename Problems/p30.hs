@@ -12,12 +12,12 @@
 import Data.Char
 
 canBeSumOfDigits :: Int -> Int -> Bool
-canBeSumOfDigits exponent number = do 
-    let sumOfPowers = sum $ map ((^exponent) . digitToInt ) $ show number
+canBeSumOfDigits exponent' number = do 
+    let sumOfPowers = sum $ map ((^exponent') . digitToInt ) $ show number
     sumOfPowers == number
 
+calc :: Int 
 calc = sum $ [x | x <- [2..999999], canBeSumOfDigits 5 x == True]
 
 main :: IO ()
-main = do
-    print calc
+main = print calc

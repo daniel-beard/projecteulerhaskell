@@ -13,9 +13,11 @@
 import Data.Set 
 
 -- fromList is *way* faster than nub (which is O(n^2))
-distinctTerms lower upper = size $ fromList [a^b | a <- [lower..upper], b <- [lower..upper]]
+distinctTerms :: Int 
+distinctTerms = size $ fromList [a^b | a <- [2..100], b <- [2..100]]
 
-calc = distinctTerms 2 100
+calc :: Int 
+calc = distinctTerms 
 
-main = do 
-    putStrLn $ show calc
+main :: IO () 
+main = print calc

@@ -67,6 +67,5 @@ calc :: Int
 calc = sum [length $ filter (/=' ') name | x <- [1..1000], let name = digitName x]
 
 main :: IO ()
-main = do 
-    print calc
+main = print calc
     

@@ -75,10 +75,9 @@ rightDiagonals list = leftDiagonals $ reverse $ transpose list
 
 ------------------------------------------------------------
 
-calculate :: Int 
-calculate = maximum [maxHorizontal, maxVertical, maxLeftDiagonals, maxRightDiagonals]            
+calc :: Int 
+calc = maximum [maxHorizontal, maxVertical, maxLeftDiagonals, maxRightDiagonals]            
                    
 main :: IO ()                    
-main = do 
-    print calculate
+main = print calc
 

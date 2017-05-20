@@ -14,5 +14,4 @@ calculate :: Int -- Filter by decimal palindromes, then binary palindromes, then
 calculate = sum $ filter (isPalindrome . printf "%b") $ filter (isPalindrome . show) ([1..999999] :: [Int])
 
 main :: IO ()
-main = do 
-    print calculate
+main = print calculate

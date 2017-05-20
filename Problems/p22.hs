@@ -9,7 +9,7 @@ import Data.List
 import Data.Char
 
 nameScore :: String -> Int
-nameScore name = sum $ map (\chr -> (ord chr)-64) name
+nameScore name = sum $ map (\c -> (ord c)-64) name
 
 calc :: [String] -> Int 
 calc input = do 

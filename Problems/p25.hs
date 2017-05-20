@@ -26,9 +26,8 @@ nextFib arr = (foldl1 (+) $ take 2 $ arr):arr
 fibUntil :: (Integer -> Bool) -> [Integer] -> [Integer]
 fibUntil cond list = if cond (head list) then list else fibUntil cond (nextFib list)
 
-calculate :: Int 
-calculate = length $ fibUntil (\a -> length(show a) >= 1000) [1,1]
+calc :: Int 
+calc = length $ fibUntil (\a -> length(show a) >= 1000) [1,1]
 
 main :: IO ()
-main = do 
-    print calculate
+main = print calc

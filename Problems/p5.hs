@@ -5,6 +5,7 @@
 -- calc = take 1 $ [x | x <- [1..], all (\y -> x `rem` y == 0) [1..20]]
 
 -- Second, and better: left fold using lcm (smallest possible integer that both x && y divide)
+
 calc :: Int
 calc = foldl (lcm) 1 [1..20]
 

@@ -26,5 +26,5 @@ factorialSum n = sum $ map (factorial . digitToInt) $ show n
 calc :: Int
 calc = sum $ [x | x <- [3..9999999], factorialSum(x) == x]
 
-main = do 
-    print calc
+main :: IO () 
+main = print calc

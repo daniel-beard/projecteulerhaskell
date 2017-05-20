@@ -16,5 +16,4 @@ calculate :: Integer
 calculate = (factorial (gridSize + gridSize)) `div` (factorial gridSize) `div` (factorial gridSize)
 
 main :: IO ()
-main = do 
-    print calculate
+main = print calculate

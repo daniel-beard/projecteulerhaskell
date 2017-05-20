@@ -28,5 +28,4 @@ calc :: Int
 calc = nthTriangleNumber(length(takeWhile (<500) $ map (numDivisors . nthTriangleNumber) [1..]) + 1)
 
 main :: IO ()
-main = do 
-    print calc
+main = print calc
